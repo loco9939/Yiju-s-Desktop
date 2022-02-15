@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head></head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+
+
+<body>
+    <div>
+        <button>버튼</button>
+        <h1>안녕하세요 저는 김이주입니다.</h1>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        // 버튼을 누르면..
+        // 0.5초 후에 h1안에 a를 더함
+        // 0.5초 후에 h1안에 b를 더함
+        // 0.5초 후에 h1안에 c를 더함
+
+        var h1태그 = document.querySelector('h1');
+        var 원래글씨 = document.querySelector('h1').innerHTML;
+
+        function 타이핑애니메이션(h1태그, 원래글씨) {
+            h1태그.innerHTML = '';
+
+             for (let i = 0; i < 원래글씨.length; i++) { // for 반복문 안에 이벤트리스너안에 i 값의 변수는 let으로 해줘야한다.
+                setTimeout(a => {
+                    h1태그.innerHTML = h1태그.innerHTML + 원래글씨[i]
+                }, (i * 100));
+            };
+        };
+
+        $('button').click(function () {
+            타이핑애니메이션(h1태그, 원래글씨);
+        });
+    </script>
+
+</body>
+
+</html>

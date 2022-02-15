@@ -1,0 +1,295 @@
+.body{
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: -1px;
+    font-family:gulim;
+    letter-spacing: 0.5px;
+    font-weight: 500
+}
+
+.tit{
+    font-size: 30px;
+    color:#d23;
+    font-family: serif;
+    text-align: center;
+    font-weight: 900;
+}
+
+.profile{
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.content{
+    color: red
+}
+
+.box {
+    width: 100px;
+    background-color: mediumvioletred;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    box-shadow: 5px 5px 4px black;
+}
+
+.container {
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: aquamarine
+}
+
+
+.left-menu {
+    width: 70%;
+    height: 200px;
+/*    background-color: cornflowerblue;*/
+    float: left;
+    
+}
+
+.right {
+    width: 30%;
+    height: 200px;
+/*    background-color: coral;*/
+    float: left;
+    
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color: grey;
+/*    clear: both;*/
+}
+
+.title {
+    width: 100%;
+    height: 20%;
+    background-color:aqua;
+    float: left;
+}
+
+.small {
+    font-size: 5px;
+    color: grey;
+}
+
+.img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin: 5px;
+    float: left;
+}
+
+.main {
+    width: 100%;
+    height: 70%;
+    background-color:antiquewhite;
+    float: right;
+    
+}
+
+.h1 {
+    font-size: 18px;
+    margin: 5px
+}
+
+.write {
+    float:left;
+}
+
+.blog-left {
+    width: 70%;
+    height: 200px;
+    float: left;
+}
+
+.blog-right {
+    width: 30%;
+    height: 200px;
+    float: left;
+}
+
+.blog-name {
+    float: left;
+}
+
+.blog-image {
+    width: 50px;
+    float: left;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-content {
+    width:100%;
+    clear: both;
+}
+
+.blog-images {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.navbar li{
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    padding: 10px;
+    
+    
+    
+}
+
+.main-background {
+    width: 100%;
+    height: 500px;
+    background-image: url(../img/shoes.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 1px;
+}
+
+.main-title {
+    color: white;
+    font-size: 100px;
+    margin: 10px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
+body {
+    margin: 0px;
+    position: relative;
+}
+
+.hole {
+    width: 80%;
+    max-width: 600px;
+    background-color: black;
+    padding: 3px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 100px;
+}
+
+.hole1 {
+    width: 60%;
+    padding: 20px;
+    background-color: blue;
+    clear: both;
+    position: absolute;
+    z-index: 9;
+}
+
+.bbb {
+    width: 400px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+p {
+    display: inline-block;
+    margin: 0px;
+    padding: 5px;
+}
+
+.iptext {
+    text-align: center;
+}
+
+.ipemail {
+    text-align: center;
+}
+
+.ippnb {
+    text-align: center;
+}
+
+input[type="text"],[type="email"] {
+    font-size: 20px;
+    color: purple;
+    
+}
+
+td,th {
+    font-size: 20px;
+    padding: 5px;
+}
+
+th:nth-child(2),th:nth-child(3){
+    width: 25%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    border-radius: 7px;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #666;
+    position: relative;
+}
+
+.udl {
+    border-bottom: 1px solid black
+}
+
+.money_bt {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+a:link {
+    color:red;
+}
+
+a:visited {
+    color: green;
+}
+
+.top {
+    background-color: red;
+}

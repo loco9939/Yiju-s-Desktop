@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/main1.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="card-background">
+        <div class="card-box">
+            <img src="/img/card1.png">
+        </div>
+        <div class="card-box">
+            <img src="img/card2.png">
+        </div>
+        <div class="card-box">
+            <img src="img/card3.png">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        $(window).scroll(function () { // viewport가 스크롤이 될 떄,
+            var 높이 = $(window).scrollTop(); // viewport가 스크롤 되는 높이 알려주는 scrollTop() 함수
+            console.log(높이);
+
+            // 650 부터 1150까지 스크롤바를 내리면, 첫째카드 opacity 1-0으로 서서히 변경
+            // 그럼 밑에서 말하는 이만큼(y)이 얼만큼이냐?
+            // 일차함수를 이용한 후 변수에 할당해주자. y= a * 높이 + b
+
+            var y = (-1 / 500) * 높이 + 115 / 50; // 높이가 650일 때 y는 1이고, 높이가 1150일 때 y는 0이다. 
+            var z = (-1 / 5000) * 높이 + 565 / 500; // 높이가 650일 때 z는 1이고, 높이가 1150일 때 z는 0.9이다.
+
+            var a = (-0.002) * 높이 + 3.9;
+            var b = (-0.0002) * 높이 + 1.29;
+
+            if (높이 >= 650) {
+                $('.card-box').eq(0).css('opacity', y); // 0번째 카드 박스 opacity를 이만큼(y) 서서히 변경해주세요.
+                $('.card-box').eq(0).css('transform', `scale(${z})`); // 0번째 카드 박스 scaleX를 이만큼(z) 서서히 변경해주세요. 
+            };
+            if (높이 >= 1400) {
+                $('.card-box').eq(1).css('opacity', a);
+                $('.card-box').eq(1).css('transform', `scale(${b})`);
+            }
+        });
+    </script>
+</body>
+
+</html>

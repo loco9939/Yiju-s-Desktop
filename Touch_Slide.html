@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='/css/main2.css' rel='stylesheet'>
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <!-- CSS 속성 변경하기 위해 쓰는 함수 "animate"
+    단, 아주 서서히 적용시켜준다. -->
+    <div class="left-menu">
+        <p>Menu Title</p>
+    </div>
+
+
+    <div class='black-box'>
+        <div class="white-box">
+            <p style="color: lightgray; padding-bottom: 20px; margin-top: -10px;">로그인하세요</p>
+            <form action="login.php" class="form-wrap">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" id="email">
+                    <p id=email-alert>이메일이 빈칸입니다.</p>
+                    <p id=email-alert2>이메일 형식이 틀렸습니다.</p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password (대문자 및 특수문자 포함, 8자 이상)" id="pw">
+                    <p id=pw-alert>패스워드가 빈칸입니다.</p>
+                    <p id=pw-alert2>패스워드가 대문자가 없습니다.</p>
+                    <p id=pw-alert3>패스워드가 너무 짧습니다.(8자 이상)</p>
+                    <p id=pw-alert4>패스워드에 특수문자를 포함하세요.(!,@,# 등)</p>
+                </div>
+                <button type="submit" class="btn btn-primary" id="sub">전송</button>
+                <!-- 닫기 버튼만 눌러도 빈칸알림창 뜨는 것 해결 -->
+                <!-- type="button" 추가하거나 form 바깥으로 button태그를 뺀다.-->
+                <button type="button" class="btn login-close">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="nav-menu">
+        <h4 class="large-logo">Shirts Studio</h4>
+        <a id="nav-sub-button">Products</a>
+    </div>
+
+    <ul class="list-group nav-sub">
+        <li class="list-group-item">Brand new</li>
+        <li class="list-group-item">Custom design</li>
+        <li class="list-group-item">Inner wear</li>
+    </ul>
+
+    <div class="jumbotron main-background pt-5">
+        <h1 class="display-4">Shirts Studio</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a id="login" class="btn btn-primary btn-lg" href="#" role="button">Login</a>
+        <a id="show-menu" class="btn btn-danger btn-lg" href="#" role="button">Show Menu</a>
+    </div>
+
+    <h4 class="my-4 text-center">Showcase</h4>
+    <div style="overflow: hidden; position: relative;">
+        <div class="slide-container">
+            <div class="slide-box adult" id="pic1">
+            </div>
+            <div class="slide-box hanger" id="pic2">
+            </div>
+            <div class="slide-box waiting" id="pic3">
+            </div>
+        </div>
+        <button class="carousel next-button"><i class="fas fa-chevron-right"></i></button>
+        <button class="carousel previous-button"><i class="fas fa-chevron-left"></i></button>
+    </div>
+
+    <div class="my-5"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+        integrity="sha256-eVNjHw5UeU0jUqPPpZHAkU1z4U+QFBBY488WvueTm88=" crossorigin="anonymous"></script>
+
+    <script>
+        var 이미지1 = document.querySelector('.slide-container'); // 터치 구현할 HTML 요소 찾아준다.(쌩JS 셀렉터 이용)
+        var 매니저 = new Hammer.Manager(이미지1); // 함수에 담아준다.
+        매니저.add(new Hammer.Pan({
+            threshold: 0 // 얼만큼 터치 슬라이드가 이동해야하는 한계점?
+        }));
+
+
+        매니저.on('pan', function (e) {
+            // console.log(e.deltaX) // X축으로 드래그한 거리 알려주는 함수
+            // 만약에 왼쪽으로 그림 슬라이드 했을 때,
+            if (지금보이는사진 == 1) {
+                if (e.deltaX < -1) {
+                    $('.slide-container').css('transform', 'translateX(' + e.deltaX + 'px)');
+                }
+            } else {
+                if (e.deltaX < -100) {
+                    $('.slide-container').css('transform', 'translateX(' - 100 + e.deltaX + 'px)');
+                }
+            }
+            // 만약에 슬라이드 하다가 마우스를 떼면 두번째 사진으로 변해야함.
+            if (e.isFinal && 지금보이는사진 == 1) {
+                $('.slide-container').addClass('transforming'); // 마우스 놓았을 때, transition: transform 1s 클래스 붙여준다.
+                $('.slide-container').css('transform', 'translateX(-100vw)'); // 2번째 사진 보여준다.
+                setTimeout(function () {
+                    $('.slide-container').removeClass('transforming');
+                }, 1000); // transition: transform 1s 클래스 떼주세요~ 1초뒤에~
+                지금보이는사진 += 1
+            } else if (e.isFinal && 지금보이는사진 == 2) {
+                $('.slide-container').addClass('transforming');
+                $('.slide-container').css('transform', 'translateX(-200vw)');
+                setTimeout(function () {
+                    $('.slide-container').removeClass('transforming');
+                }, 1000);
+            };
+        });
+
+        $(window).scroll(function () { //viewport에서 스크롤 움직이면
+            if ($(window).scrollTop() > 100) { // viewport에서 스크롤 100px 초과 움직이면
+                $('.nav-menu').addClass('nav-black'); // 이 코드를 실행해주세요~
+                $('.nav-menu h4').addClass('small-logo');
+            } else {
+                $('.nav-menu').removeClass('nav-black');
+                $('.nav-menu h4').removeClass('small-logo');
+            };
+        });
+
+        var 지금보이는사진 = 1;
+
+        $('.next-button').click(function () {
+            if (지금보이는사진 < 3) { // 조건이 맞지 않으면 실행 시키지 않는다.
+                $('.slide-container').css('transform', 'translateX(-' + 지금보이는사진 + '00vw)');
+                지금보이는사진 = 지금보이는사진 + 1
+            };
+        });
+
+        $('.previous-button').click(function () {
+            if (지금보이는사진 > 1) {
+                지금보이는사진 = 지금보이는사진 - 1
+                $('.slide-container').css('transform', 'translateX(-' + (지금보이는사진 - 1) + '00vw)');
+            };
+        })
+
+        $('#show-menu').click(function () {
+            $('.left-menu').animate({
+                marginLeft: '0px'
+            }, 1000);
+        });
+
+
+        var 이메일안내창 = $('#email-alert');
+        var 이메일안내창2 = $('#email-alert2');
+
+        $('form').on('submit', function (e) {
+
+            var 입력한이메일 = $('#email').val();
+
+            if (입력한이메일 == "") {
+                e.preventDefault();
+                이메일안내창.show();
+            } else if (/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(입력한이메일) == false) {
+                e.preventDefault();
+                이메일안내창2.show();
+                이메일안내창.hide();
+            } else {
+                이메일안내창.hide();
+                이메일안내창2.hide();
+            }
+
+            var 입력한패스워드 = $('#pw').val();
+            var 패스워드빈칸 = $('#pw-alert');
+            var 패스워드대문자 = $('#pw-alert2');
+            var 패스워드길이 = $('#pw-alert3');
+            var 패스워드특수 = $('#pw-alert4');
+
+            // 숙제! 패스워드 입력란에 대문자,특수문자없거나 패스워드가 너무 짧다면 전송을 막고 경고문을 띄워보자.
+            if (입력한패스워드 == "") {
+                e.preventDefault();
+                패스워드빈칸.show();
+            } else if (/[A-Z]+/.test(입력한패스워드) == false) {
+                e.preventDefault();
+                패스워드대문자.show();
+                패스워드빈칸.hide();
+                패스워드특수.hide();
+                패스워드길이.hide();
+            } else if (/\S.{7,20}/.test(입력한패스워드) == false) {
+                e.preventDefault();
+                패스워드길이.show();
+                패스워드빈칸.hide();
+                패스워드대문자.hide();
+                패스워드특수.hide();
+            } else if (/(?=.*?[#?!@$%^&*-])/.test(입력한패스워드) == false) {
+                e.preventDefault();
+                패스워드특수.show();
+                패스워드빈칸.hide();
+                패스워드대문자.hide();
+                패스워드길이.hide();
+            }
+
+        });
+
+        $('#login').on('click', function modal() {
+            $('.black-box').addClass('slide-down');
+        });
+
+        $('.login-close').click(function modal() {
+            $('.black-box').removeClass('slide-down');
+        });
+
+        $('#nav-sub-button').click(function modal() {
+            $('.nav-sub').slideToggle()
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/d83a0304b7.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
